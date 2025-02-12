@@ -6,6 +6,8 @@ import validate from "./validation";
 import Navbar from "../../components/navbar/navbar";
 
 function Form() {
+  //const URL = 'http://localhost:3001';
+  const URL = "https://pi-coutries-back.onrender.com";
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -24,7 +26,7 @@ function Form() {
 
   const getCountries = async () => {
     try {
-      const response = await axios("http://localhost:3001/countries");
+      const response = await axios(`${URL}/countries`);
       const data = response.data;
       data.sort((a, b) => a.name.localeCompare(b.name));
       setCountries(data);
@@ -135,7 +137,10 @@ function Form() {
           loop
           src="/background.mp4"
         ></video>
-        <form onSubmit={handleSubmit} className="w-50 z-1 mt-3 p-5 bg-white position-absolute top-0 end-0 overflow-y-scroll">
+        <form
+          onSubmit={handleSubmit}
+          className="w-50 z-1 mt-3 p-5 bg-white position-absolute top-0 end-0 overflow-y-scroll"
+        >
           <h2>CREA TU ACTIVIDAD</h2>
           {showActivityCreated && (
             <div className="activityCreated">

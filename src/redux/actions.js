@@ -6,7 +6,7 @@ export const CREATE_ACTIVITY = "CREATE_ACTIVITY"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
 
 //const baseURL = 'http://localhost:3001';
-const baseURL = 'https://pi-coutries-back-production.up.railway.app/    ';
+const baseURL = 'https://pi-coutries-back.onrender.com';
 
 export function  getCountries(){
     return async function(dispatch){

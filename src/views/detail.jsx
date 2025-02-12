@@ -5,11 +5,13 @@ import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/Footer";
 
 function Detail() {
+  //const URL = 'http://localhost:3001';
+  const URL = 'https://pi-coutries-back.onrender.com'
   const params = useParams();
   const [country, setCountry] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:3001/countries/${params?.id}`)
+    axios(`${URL}/countries/${params?.id}`)
       .then(({ data }) => {
         if (data?.id) {
           setCountry(data);
