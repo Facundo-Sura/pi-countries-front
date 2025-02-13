@@ -6,7 +6,7 @@ export const CREATE_ACTIVITY = "CREATE_ACTIVITY"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
 
 //const backendUrl = 'http://localhost:3001';
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "https://pi-coutries-back.onrender.com";
+const backendUrl = "https://pi-coutries-back.onrender.com";
 
 export function  getCountries(){
     return async function(dispatch){
