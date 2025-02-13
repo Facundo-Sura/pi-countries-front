@@ -5,12 +5,12 @@ export const GET_BY_NAME = "GET_BY_NAME"
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
 
-//const baseURL = 'http://localhost:3001';
-const baseURL = 'https://pi-coutries-back.onrender.com';
+//const backendUrl = 'http://localhost:3001';
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "https://pi-coutries-back.onrender.com";
 
 export function  getCountries(){
     return async function(dispatch){
-        const response = await axios(`${baseURL}/countries`)
+        const response = await axios(`${backendUrl}/countries`)
         return dispatch({
             type:"GET_COUNTRIES",
             payload:response.data
@@ -20,7 +20,7 @@ export function  getCountries(){
 
 export function  getCountryByName(name){
     return async function(dispatch){
-        const response = await axios(`${baseURL}/countries?name=${name}`)
+        const response = await axios(`${backendUrl}/countries?name=${name}`)
         return dispatch({
             type:"GET_BY_NAME",
             payload:response.data
@@ -32,7 +32,7 @@ export function createActivity(input){
     return async function(dispatch){
         try {
             
-        const response = await axios.post(`${baseURL}/activities`, input)
+        const response = await axios.post(`${backendUrl}/activities`, input)
         const createdActivity = response.data;
        dispatch({
             type:"CREATE_ACTIVITY",
@@ -49,7 +49,7 @@ export function createActivity(input){
 
 export function allActivities(){
 return async function(dispatch){
-    const response = await axios(`${baseURL}/activities`)
+    const response = await axios(`${backendUrl}/activities`)
     return dispatch({
         type:"GET_ACTIVITIES",
         payload:response.data

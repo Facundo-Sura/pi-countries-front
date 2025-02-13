@@ -6,8 +6,8 @@ import validate from "./validation";
 import Navbar from "../../components/navbar/navbar";
 
 function Form() {
-  //const URL = 'http://localhost:3001';
-  const URL = "https://pi-coutries-back.onrender.com";
+  //const backendUrl = 'http://localhost:3001';
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "https://pi-coutries-back.onrender.com";
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -26,7 +26,7 @@ function Form() {
 
   const getCountries = async () => {
     try {
-      const response = await axios(`${URL}/countries`);
+      const response = await axios(`${backendUrl}/countries`);
       const data = response.data;
       data.sort((a, b) => a.name.localeCompare(b.name));
       setCountries(data);
